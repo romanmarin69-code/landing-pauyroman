@@ -19,7 +19,7 @@
 <link rel="preload" as="image" href="img/logos/rosa-1600.webp" media="(min-width: 900px)">
 <style>
 :root{
-  --bg:#050505; --bg2:#0b0b0c; --fg:#f5f5f7; --mute:#8e8e93; --dim:#5a5a5f;
+  --bg:#050505; --bg2:#0b0b0c; --fg:#f5f5f7; --mute:#8e8e93; --dim:#808086;
   --line:rgba(255,255,255,.1); --lime:#d4ff3a; --lime-ink:#0a0a0a;
   --wa:#25D366;
   --sans:"Inter Tight",-apple-system,BlinkMacSystemFont,"SF Pro Display",system-ui,sans-serif;
@@ -55,7 +55,7 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
 #intro .credit{position:absolute;inset:0;display:grid;place-items:center;text-align:center;opacity:0}
 #intro .credit b{display:block;font-weight:800;font-size:clamp(26px,6vw,64px);letter-spacing:.5em;margin-right:-.5em}
 #intro .credit span{display:block;margin-top:18px}
-#intro .skip{position:absolute;bottom:calc(13svh + 18px);left:0;right:0;text-align:center;opacity:.5}
+#intro .skip{position:absolute;bottom:calc(13svh + 18px);left:0;right:0;text-align:center;color:#a1a1a6}
 #flash{position:fixed;inset:0;background:#fff;z-index:101;opacity:0;pointer-events:none}
 
 /* ---------- header / hud ---------- */
@@ -64,11 +64,11 @@ header.top .brand{font-weight:700;font-size:15px;letter-spacing:-.01em}
 header.top .brand i{font-style:normal;color:var(--lime)}
 header.top .pill{font-size:13px;font-weight:600;padding:9px 16px;border-radius:99px;background:rgba(255,255,255,.08);border:1px solid var(--line);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px)}
 .tc{position:fixed;left:var(--gut);bottom:calc(18px + env(safe-area-inset-bottom));z-index:80;display:flex;gap:10px;align-items:center;font-variant-numeric:tabular-nums}
-.tc .rec{width:7px;height:7px;border-radius:50%;background:#ff3b30;animation:blink 1.2s steps(2) infinite}
+.tc .rec{width:7px;height:7px;border-radius:50%;background:#ff3b30}
 @keyframes blink{50%{opacity:0}}
 
 /* ---------- WhatsApp float ---------- */
-.wa-float{position:fixed;right:var(--gut);bottom:calc(16px + env(safe-area-inset-bottom));z-index:85;width:58px;height:58px;border-radius:50%;background:var(--wa);display:grid;place-items:center;box-shadow:0 10px 30px rgba(37,211,102,.35),0 2px 8px rgba(0,0,0,.4);transform:scale(0);transition:transform .25s var(--ease)}
+.wa-float{position:fixed;right:var(--gut);bottom:calc(16px + env(safe-area-inset-bottom));z-index:85;width:58px;height:58px;border-radius:50%;background:var(--wa);display:grid;place-items:center;box-shadow:0 10px 30px rgba(0,0,0,.45),0 2px 8px rgba(0,0,0,.4);transform:scale(0);transition:transform .25s var(--ease)}
 .wa-float.on{transform:scale(1)}
 .wa-float:active{transform:scale(.92)}
 .wa-float svg{width:30px;height:30px;fill:#fff}
@@ -80,7 +80,7 @@ header.top .pill{font-size:13px;font-weight:600;padding:9px 16px;border-radius:9
 .btn:active{transform:scale(.97)}
 .btn-lime{background:var(--lime);color:var(--lime-ink)}
 .btn-ghost{border:1px solid rgba(255,255,255,.25);color:var(--fg)}
-.btn-wa{background:var(--wa);color:#fff}
+.btn-wa{background:var(--wa);color:#04140a}
 .btn svg{width:20px;height:20px;fill:currentColor;flex:none}
 
 /* ---------- hero ---------- */
@@ -93,7 +93,7 @@ header.top .pill{font-size:13px;font-weight:600;padding:9px 16px;border-radius:9
 .hero .leak{position:absolute;width:80vmax;height:80vmax;border-radius:50%;filter:blur(60px);opacity:.0;pointer-events:none}
 .hero .leak.l1{background:radial-gradient(circle,rgba(255,140,40,.55),transparent 60%);left:-40vmax;top:-30vmax}
 .hero .leak.l2{background:radial-gradient(circle,rgba(212,255,58,.35),transparent 60%);right:-45vmax;bottom:-40vmax}
-.hero .copy{position:relative;z-index:2;text-align:center;padding:0 var(--gut);max-width:1100px}
+.hero .copy{position:relative;z-index:2;margin-top:4svh;text-align:center;padding:0 var(--gut);max-width:1100px}
 .hero .kicker{margin-bottom:22px;color:#d1d1d6;text-shadow:0 1px 12px rgba(0,0,0,.8)}
 .hero h1,.hero .sub{text-shadow:0 2px 30px rgba(0,0,0,.45)}
 .hero h1{font-weight:800;font-size:clamp(46px,10.5vw,150px);line-height:.92;letter-spacing:-.055em}
@@ -169,14 +169,14 @@ header.top .pill{font-size:13px;font-weight:600;padding:9px 16px;border-radius:9
 .tile.biz{background:linear-gradient(145deg,#2b2b30 0%,#151517 60%,#0e0e10 100%)}
 .tile.star{background:linear-gradient(145deg,#e6ff7a 0%,#d4ff3a 35%,#8fcf1f 100%);color:var(--lime-ink)}
 .tile.sel{opacity:1;transform:scale(1);border-color:#fff;box-shadow:0 20px 60px rgba(0,0,0,.5)}
-.tile.star.sel{box-shadow:0 20px 70px rgba(212,255,58,.28)}
+.tile.star.sel{box-shadow:0 20px 60px rgba(0,0,0,.5)}
 .tile .pn{font-weight:800;font-size:clamp(20px,3.4vw,30px);letter-spacing:-.02em}
 .tile .pd{font-size:13px;opacity:.75;margin-top:4px;line-height:1.3}
 .tile .pp{font-weight:800;font-size:clamp(24px,5vw,40px);letter-spacing:-.04em;line-height:1}
 .tile .chk{position:absolute;top:14px;right:14px;width:26px;height:26px;border-radius:50%;display:grid;place-items:center;background:#fff;color:#000;transform:scale(0);transition:transform .3s var(--ease)}
 .tile.sel .chk{transform:scale(1)}
 .tile .chk svg{width:14px;height:14px}
-.tile .badge{position:absolute;top:-11px;left:16px;background:#000;color:var(--lime);font-family:var(--mono);font-size:10px;letter-spacing:.14em;padding:5px 10px;border-radius:99px;border:1px solid rgba(212,255,58,.4)}
+.tile .badge{position:absolute;top:-11px;left:16px;background:#000;color:var(--lime);font-family:var(--mono);font-size:11px;letter-spacing:.14em;padding:5px 10px;border-radius:99px;border:1px solid rgba(212,255,58,.4)}
 .rows{margin-top:28px;border-top:1px solid var(--line)}
 .row{display:flex;justify-content:space-between;align-items:center;padding:17px 2px;border-bottom:1px solid var(--line);font-size:16px;gap:16px}
 .row .k{color:#c7c7cc}
@@ -199,7 +199,7 @@ header.top .pill{font-size:13px;font-weight:600;padding:9px 16px;border-radius:9
 .ending .btn{margin-top:44px;height:62px;padding:0 34px;font-size:17px}
 .credits{margin-top:14svh;display:grid;gap:10px;font-size:13px;color:var(--mute)}
 .credits div{display:grid;grid-template-columns:1fr 1fr;gap:18px;min-width:min(86vw,420px)}
-.credits div span:first-child{text-align:right;font-family:var(--mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;padding-top:3px}
+.credits div span:first-child{text-align:right;font-family:var(--mono);font-size:11px;letter-spacing:.16em;text-transform:uppercase;padding-top:2px}
 .credits div span:last-child{text-align:left;color:var(--fg)}
 footer{padding:30px var(--gut) calc(90px + env(safe-area-inset-bottom));text-align:center;color:var(--dim);font-size:12px}
 
@@ -281,7 +281,6 @@ footer{padding:30px var(--gut) calc(90px + env(safe-area-inset-bottom));text-ali
     <div class="leak l1"></div><div class="leak l2"></div>
     <div class="flare"></div>
     <div class="copy">
-      <div class="kicker mono">Estudio de marca · Logos &amp; Landing pages</div>
       <h1><span class="ln">Tu marca,</span><span class="ln thin">lista para</span><span class="ln">el estreno.</span></h1>
       <p class="sub">Diseñamos logos y webs con nivel de cine. Desde <b>$19.900</b>, precio final.</p>
       <div class="ctas">
@@ -494,7 +493,7 @@ h1.querySelectorAll('.ln').forEach(ln => {
 });
 const chars = h1.querySelectorAll('.ch');
 gsap.set(chars, { yPercent: 110, opacity: 0, filter: 'blur(14px)' });
-gsap.set(['.hero .kicker', '.hero .sub', '.hero .ctas', '.hero .scroll-hint', 'header.top', '.tc'], { opacity: 0, y: 18 });
+gsap.set(['.hero .sub', '.hero .ctas', '.hero .scroll-hint', 'header.top', '.tc'], { opacity: 0, y: 18 });
 gsap.set('.hero .media', { scale: 1.18 });
 
 /* ---------- hero trailer (ken burns crossfade) ---------- */
@@ -538,8 +537,7 @@ function startFilm(){
    .to('.bar.t', { scaleY: 0, duration: 1.6, ease: 'power4.inOut' }, '<.3')
    .to('.bar.b', { scaleY: 0, duration: 1.6, ease: 'power4.inOut' }, '<')
    .to('.hero .leak', { opacity: 1, duration: 2 }, '<')
-   .to('.hero .kicker', { opacity: 1, y: 0, duration: .8, ease: 'power3.out' }, '<.2')
-   .to(chars, { yPercent: 0, opacity: 1, filter: 'blur(0px)', duration: 1.1, ease: 'expo.out', stagger: .028 }, '<.1')
+   .to(chars, { yPercent: 0, opacity: 1, filter: 'blur(0px)', duration: 1.1, ease: 'expo.out', stagger: .028 }, '<.3')
    .to(['.hero .sub', '.hero .ctas'], { opacity: 1, y: 0, duration: .9, ease: 'power3.out', stagger: .12 }, '-=.6')
    .to(['header.top', '.tc', '.hero .scroll-hint'], { opacity: 1, y: 0, duration: .8 }, '-=.5')
    .call(() => {
