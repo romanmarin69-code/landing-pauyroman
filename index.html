@@ -38,8 +38,8 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
 .lime{color:var(--lime)}
 
 /* ---------- film overlays ---------- */
-.grain{position:fixed;inset:-100%;z-index:90;pointer-events:none;opacity:.075;background-size:180px 180px;animation:grain 1s steps(6) infinite;will-change:transform}
-@keyframes grain{0%{transform:translate(0,0)}17%{transform:translate(-6%,4%)}33%{transform:translate(5%,-7%)}50%{transform:translate(-3%,8%)}67%{transform:translate(7%,2%)}83%{transform:translate(-8%,-3%)}100%{transform:translate(0,0)}}
+.grain{position:fixed;inset:-12%;z-index:90;pointer-events:none;opacity:.075;background-size:180px 180px;animation:grain 1s steps(6) infinite;will-change:transform}
+@keyframes grain{0%{transform:translate3d(0,0,0)}17%{transform:translate3d(-5%,3%,0)}33%{transform:translate3d(4%,-5%,0)}50%{transform:translate3d(-2%,6%,0)}67%{transform:translate3d(6%,2%,0)}83%{transform:translate3d(-6%,-3%,0)}100%{transform:translate3d(0,0,0)}}
 .vignette{position:fixed;inset:0;z-index:89;pointer-events:none;background:radial-gradient(120% 90% at 50% 50%,transparent 55%,rgba(0,0,0,.55) 100%)}
 .bar{position:fixed;left:0;right:0;height:13svh;background:#000;z-index:95;pointer-events:none;transform-origin:top}
 .bar.t{top:0}.bar.b{bottom:0;transform-origin:bottom}
@@ -62,7 +62,7 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
 header.top{position:fixed;top:0;left:0;right:0;z-index:80;display:flex;justify-content:space-between;align-items:center;padding:calc(14px + env(safe-area-inset-top)) var(--gut) 14px;mix-blend-mode:normal}
 header.top .brand{font-weight:700;font-size:15px;letter-spacing:-.01em}
 header.top .brand i{font-style:normal;color:var(--lime)}
-header.top .pill{font-size:13px;font-weight:600;padding:9px 16px;border-radius:99px;background:rgba(255,255,255,.08);border:1px solid var(--line);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px)}
+header.top .pill{font-size:13px;font-weight:600;padding:9px 16px;border-radius:99px;background:rgba(22,22,24,.82);border:1px solid var(--line)}
 .tc{position:fixed;left:var(--gut);bottom:calc(18px + env(safe-area-inset-bottom));z-index:80;display:flex;gap:10px;align-items:center;font-variant-numeric:tabular-nums}
 .tc .rec{width:7px;height:7px;border-radius:50%;background:#ff3b30}
 @keyframes blink{50%{opacity:0}}
@@ -86,11 +86,12 @@ header.top .pill{font-size:13px;font-weight:600;padding:9px 16px;border-radius:9
 /* ---------- hero ---------- */
 .hero{position:relative;height:240svh}
 .hero .stage{position:sticky;top:0;height:100svh;overflow:hidden;display:grid;place-items:center}
-.hero .media{position:absolute;inset:0;overflow:hidden;will-change:transform;transform-origin:50% 50%}
+.hero .media{position:absolute;inset:0;overflow:hidden;will-change:transform;transform-origin:50% 50%;border-radius:24px}
+.hero .frame-box{position:absolute;inset:0;will-change:transform}
 .hero .media img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0}
 .hero .media img.on{opacity:1}
 .hero .shade{position:absolute;inset:0;background:radial-gradient(70% 55% at 50% 50%,rgba(5,5,5,.62),rgba(5,5,5,.2) 100%),linear-gradient(180deg,rgba(5,5,5,.55) 0%,rgba(5,5,5,.2) 40%,rgba(5,5,5,.88) 100%)}
-.hero .leak{position:absolute;width:80vmax;height:80vmax;border-radius:50%;filter:blur(60px);opacity:.0;pointer-events:none}
+.hero .leak{position:absolute;width:80vmax;height:80vmax;border-radius:50%;opacity:0;pointer-events:none;will-change:transform}
 .hero .leak.l1{background:radial-gradient(circle,rgba(255,140,40,.55),transparent 60%);left:-40vmax;top:-30vmax}
 .hero .leak.l2{background:radial-gradient(circle,rgba(212,255,58,.35),transparent 60%);right:-45vmax;bottom:-40vmax}
 .hero .copy{position:relative;z-index:2;margin-top:4svh;text-align:center;padding:0 var(--gut);max-width:1100px}
@@ -128,10 +129,12 @@ header.top .pill{font-size:13px;font-weight:600;padding:9px 16px;border-radius:9
 .strip::before{top:6px}.strip::after{bottom:6px}
 .strip::before,.strip::after{border-radius:2px;background:repeating-linear-gradient(90deg,transparent 0 12px,rgba(255,255,255,.13) 12px 24px)}
 .track{display:flex;gap:clamp(14px,2.4vw,32px);padding:0 var(--gut);width:max-content;will-change:transform}
-.frame{flex:none;width:min(86vw,980px)}
+.frame{flex:none;width:min(86vw,980px);will-change:transform,opacity}
 .frame .pic{position:relative;aspect-ratio:3/2;border-radius:clamp(10px,1.4vw,18px);overflow:hidden;background:#111;box-shadow:0 30px 80px rgba(0,0,0,.6)}
-.frame .pic img{position:absolute;top:0;left:-8%;width:116%;height:100%;object-fit:cover;will-change:transform}
+.frame .pic img{position:absolute;top:0;left:-8%;width:116%;height:100%;object-fit:cover;will-change:transform;z-index:0}
+.frame .pic .dim{z-index:1}
 .frame .pic::after{content:"";position:absolute;inset:0;border-radius:inherit;box-shadow:inset 0 0 0 1px rgba(255,255,255,.08);pointer-events:none}
+.frame .dim{position:absolute;inset:0;background:#000;opacity:.5;pointer-events:none;will-change:opacity}
 .frame .cap{display:flex;align-items:baseline;gap:14px;margin-top:18px}
 .frame .cap .n{color:var(--lime)}
 .frame .cap h3{font-size:clamp(19px,2vw,26px);font-weight:700;letter-spacing:-.02em}
@@ -143,7 +146,7 @@ header.top .pill{font-size:13px;font-weight:600;padding:9px 16px;border-radius:9
 /* ---------- cases (landings) ---------- */
 .case{position:relative;height:280svh}
 .case .stage{position:sticky;top:0;height:100svh;overflow:hidden;display:grid;place-items:center;perspective:1400px}
-.case .glow{position:absolute;width:120vmax;height:120vmax;border-radius:50%;background:radial-gradient(circle,var(--c) 0%,transparent 55%);opacity:.0;filter:blur(20px);pointer-events:none}
+.case .glow{position:absolute;width:120vmax;height:120vmax;border-radius:50%;background:radial-gradient(circle,var(--c) 0%,transparent 58%);opacity:0;pointer-events:none;will-change:transform,opacity}
 .case .word{position:absolute;top:50%;left:0;white-space:nowrap;font-weight:900;font-size:clamp(120px,28vw,420px);letter-spacing:-.06em;line-height:1;color:transparent;-webkit-text-stroke:1px rgba(255,255,255,.14);transform:translateY(-50%);pointer-events:none;will-change:transform}
 .case .grid{position:relative;z-index:2;width:100%;max-width:1200px;padding:0 var(--gut);display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:40px}
 .case .info .mono{margin-bottom:16px}
@@ -223,6 +226,7 @@ footer{padding:30px var(--gut) calc(90px + env(safe-area-inset-bottom));text-ali
   .tile{min-height:220px;padding:26px}
   .row{font-size:17px;padding:20px 4px}
 }
+@media (max-width:899px){.grain{animation-duration:1.6s;animation-timing-function:steps(4)}}
 @media (prefers-reduced-motion:reduce){
   .grain{animation:none}
   .reveal{opacity:1;transform:none;filter:none}
@@ -271,13 +275,13 @@ footer{padding:30px var(--gut) calc(90px + env(safe-area-inset-bottom));text-ali
 <!-- HERO -->
 <section class="hero">
   <div class="stage">
-    <div class="media">
+    <div class="frame-box"><div class="media">
       <img class="on" src="img/logos/rosa-800.webp" srcset="img/logos/rosa-800.webp 800w, img/logos/rosa-1600.webp 1600w" sizes="100vw" alt="">
       <img src="img/logos/meridiano-800.webp" srcset="img/logos/meridiano-800.webp 800w, img/logos/meridiano-1600.webp 1600w" sizes="100vw" alt="">
       <img src="img/logos/cuervo-800.webp" srcset="img/logos/cuervo-800.webp 800w, img/logos/cuervo-1600.webp 1600w" sizes="100vw" alt="">
       <img src="img/logos/rayo-800.webp" srcset="img/logos/rayo-800.webp 800w, img/logos/rayo-1600.webp 1600w" sizes="100vw" alt="">
       <div class="shade"></div>
-    </div>
+    </div></div>
     <div class="leak l1"></div><div class="leak l2"></div>
     <div class="flare"></div>
     <div class="copy">
@@ -404,7 +408,7 @@ const CASES = [
 const track = document.getElementById('track');
 track.innerHTML = LOGOS.map(([f,n,t],i) => `
   <figure class="frame">
-    <div class="pic"><img src="img/logos/${f}-800.webp" srcset="img/logos/${f}-800.webp 800w, img/logos/${f}-1600.webp 1600w" sizes="(min-width:900px) 62vw, 86vw" alt="Logo ${n} — ${t}" loading="${i<3?'eager':'lazy'}" decoding="async"></div>
+    <div class="pic"><span class="dim"></span><img src="img/logos/${f}-800.webp" srcset="img/logos/${f}-800.webp 800w, img/logos/${f}-1600.webp 1600w" sizes="(min-width:900px) 62vw, 86vw" alt="Logo ${n} — ${t}" loading="${i<3?'eager':'lazy'}" decoding="async"></div>
     <figcaption class="cap"><span class="n mono">${String(i+1).padStart(2,'0')}</span><h3>${n}</h3><span class="tag mono">${t}</span></figcaption>
   </figure>`).join('');
 
@@ -469,6 +473,7 @@ selectPlan('star', false);
 
 if (!window.gsap) { document.body.classList.remove('locked'); document.getElementById('intro').remove(); return; }
 gsap.registerPlugin(ScrollTrigger);
+ScrollTrigger.config({ ignoreMobileResize: true });
 const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
 
 /* ---------- smooth scroll ---------- */
@@ -555,7 +560,7 @@ function startFilm(){
 gsap.timeline({ scrollTrigger: { trigger: '.hero', start: 'top top', end: 'bottom bottom', scrub: true } })
   .to('.hero .copy', { yPercent: -35, opacity: 0, ease: 'none' }, 0)
   .to('.hero .scroll-hint', { opacity: 0, ease: 'none', duration: .2 }, 0)
-  .fromTo('.hero .stage .media', { clipPath: 'inset(0% 0% 0% 0% round 0px)' }, { clipPath: 'inset(16% 7% 16% 7% round 24px)', ease: 'none' }, 0)
+  .fromTo('.hero .frame-box', { scale: 1 }, { scale: .8, ease: 'none' }, 0)
   .to('.hero .shade', { opacity: .4, ease: 'none' }, 0)
   .to('.hero .stage', { opacity: 0, ease: 'none', duration: .25 }, .75);
 
@@ -583,7 +588,9 @@ const reelTween = gsap.to(track, {
 frames.forEach(fr => {
   const img = fr.querySelector('img');
   gsap.fromTo(img, { xPercent: 5 }, { xPercent: -5, ease: 'none', scrollTrigger: { trigger: fr, containerAnimation: reelTween, start: 'left right', end: 'right left', scrub: true } });
-  gsap.fromTo(fr, { opacity: .35, scale: .92, filter: 'brightness(.5)' }, { opacity: 1, scale: 1, filter: 'brightness(1)', ease: 'power1.out', scrollTrigger: { trigger: fr, containerAnimation: reelTween, start: 'left 95%', end: 'center 55%', scrub: true } });
+  const st = { trigger: fr, containerAnimation: reelTween, start: 'left 95%', end: 'center 55%', scrub: true };
+  gsap.fromTo(fr, { opacity: .45, scale: .92 }, { opacity: 1, scale: 1, ease: 'power1.out', scrollTrigger: st });
+  gsap.fromTo(fr.querySelector('.dim'), { opacity: .5 }, { opacity: 0, ease: 'power1.out', scrollTrigger: { ...st } });
 });
 
 /* ---------- cases: phone dolly ---------- */
@@ -613,7 +620,12 @@ const waF = document.querySelector('.wa-float');
 const hideZones = new Set();
 const io = new IntersectionObserver(es => { es.forEach(e => e.isIntersecting ? hideZones.add(e.target) : hideZones.delete(e.target)); waF.style.transform = hideZones.size ? 'scale(0)' : ''; });
 document.querySelectorAll('.cta-wrap, .ending .btn').forEach(el => io.observe(el));
-addEventListener('load', () => ScrollTrigger.refresh());
+addEventListener('load', () => {
+  ScrollTrigger.refresh();
+  const imgs = [...document.querySelectorAll('.frame img, .scr img')];
+  const warm = () => { const im = imgs.shift(); if (!im) return; im.loading = 'eager'; (im.decode ? im.decode() : Promise.resolve()).catch(() => {}).then(() => (window.requestIdleCallback || setTimeout)(warm)); };
+  setTimeout(warm, 1500);
+});
 })();
 </script>
 </body>
